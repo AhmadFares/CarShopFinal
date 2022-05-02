@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -46,7 +47,7 @@
         android:background="#837E7E"
         android:backgroundTint="#837E7E"
         android:ems="10"
-        android:hint="   Email"
+        android:hint="email"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -128,7 +129,7 @@
         android:layout_width="66dp"
         android:layout_height="54dp"
         android:background="#7D1968"
-        android:text="-->"
+        android:text=">"
         android:textAlignment="center"
         android:textColor="#FBFBFB"
         android:textColorHint="#FFF0F0"
