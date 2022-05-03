@@ -29,6 +29,7 @@ prof.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Intent in= new Intent(getApplicationContext(),Profile.class);
+        in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
         startActivity(in);
     }
 });

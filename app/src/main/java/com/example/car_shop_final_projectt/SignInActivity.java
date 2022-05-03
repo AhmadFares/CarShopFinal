@@ -92,8 +92,7 @@ public class SignInActivity extends AppCompatActivity {
                         String hasss=toHexString(getSHA(passwordData));
                             if(passcheck.equals(hasss)){
                                 Intent intent = new Intent(getApplicationContext(), Home.class);
-                                Intent intentprof = new Intent(getApplicationContext(), Profile.class);
-                                intentprof.putExtra("logged_user",usernameData);
+                                intent.putExtra("logged_user",usernameData);
                                 startActivity(intent);
                             }
                             else{
