@@ -12,7 +12,7 @@ import io.grpc.internal.SharedResourceHolder;
 
 public class Home extends AppCompatActivity {
 ImageView firstImage,second,third,fourth,fifth,sixth;
-Button prof;
+Button prof,rev;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,16 @@ Button prof;
         fifth=findViewById(R.id.imageView17);
         sixth=findViewById(R.id.imageView18);
 prof=(Button)findViewById(R.id.button4);
+rev=(Button)findViewById(R.id.reviewpage);
 
+        rev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in= new Intent(getApplicationContext(),Reviews.class);
+
+                startActivity(in);
+            }
+        });
 prof.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -80,18 +81,20 @@ Button submit;
         rev=(EditText)findViewById(R.id.review);
         submit=(Button)findViewById(R.id.submit);
 
-                submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        Log.i("MEESS: ",rev.getText());
 
-
-                String url = "http://192.168.0.108/car_dealership_project/Reviews.php?message="+rev.getText();
-
-               DownloadTask task = new DownloadTask();
-                task.execute(url);
-//                    Log.i("ERRORE:",usernameData);
-            }
-        });
+//                submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                String url = "http://192.168.0.108/car_dealership_project/Reviews.php?message="+;
+//
+//               DownloadTask task = new DownloadTask();
+//                task.execute(url);
+////                    Log.i("ERRORE:",usernameData);
+//            }
+//        });
 
 
 
