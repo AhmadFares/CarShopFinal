@@ -22,6 +22,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 EditText username,email,password;
+    String usernameData;
 Button signup,tosignin;
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
@@ -62,6 +63,7 @@ Button signup,tosignin;
                 String access = json.getString("access");
                 if(access.equalsIgnoreCase("YES")){
                     Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.putExtra("logged_user",usernameData);
                     startActivity(intent);
                 }
                 else {
@@ -94,7 +96,7 @@ tosignin.setOnClickListener(new View.OnClickListener() {
         signup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String usernameData= ""+username.getText();
+                     usernameData= ""+username.getText();
                     String  emailData= ""+email.getText();
                    String  passwordData= ""+password.getText();
                     String url = "http://192.168.0.108/car_dealership_project/signUp.php?username="+usernameData+"&email="+emailData+"&password="+passwordData;
