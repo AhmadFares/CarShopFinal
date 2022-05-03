@@ -123,7 +123,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                  usernameData= ""+username.getText();
                   passwordData= ""+password.getText();
-                String url = "http://192.168.0.108/car_dealership_project/Login.php?username="+usernameData+"&password="+passwordData;
+                String url = "http://192.168.0.108/car_dealership_project/Login.php";
 
                 DownloadTask task = new DownloadTask();
                 task.execute(url);
