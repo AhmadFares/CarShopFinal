@@ -21,8 +21,8 @@
 
     <TextView
         android:id="@+id/signUptext3"
-        android:layout_width="146dp"
-        android:layout_height="49dp"
+        android:layout_width="373dp"
+        android:layout_height="50dp"
         android:text="Email:"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -36,18 +36,18 @@
 
     <TextView
         android:id="@+id/signUptext4"
-        android:layout_width="193dp"
-        android:layout_height="43dp"
+        android:layout_width="351dp"
+        android:layout_height="65dp"
         android:text="Old Name:"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
+        app:layout_constraintVertical_bias="0.386" />
 
     <TextView
         android:id="@+id/createAccText"
@@ -64,21 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.045" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#EA82D4"
-        android:text="Edit Info"
-        android:textColorHighlight="#FFFFFF"
-        android:textColorHint="#BA3333"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
 
     <Button
         android:id="@+id/deletacc"

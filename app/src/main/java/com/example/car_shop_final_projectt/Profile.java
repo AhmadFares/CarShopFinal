@@ -133,22 +133,22 @@ TextView e,e1;
         e1=(TextView) findViewById(R.id.signUptext3);
         String url = "http://192.168.0.108/car_dealership_project/profile.php";
         e.setText(getIntent().getStringExtra("logged_user"));
-
+deleteacc=(Button) findViewById(R.id.deletacc);
                 ProfileTask task = new ProfileTask();
                 task.execute(url);
 
 
 
 
-//        deleteacc.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String url = "http://192.168.0.108/car_dealership_project/delete.php?username="+username;
-//
-//                DownloadTask task = new DownloadTask();
-//                task.execute(url);
-//            }
-//        });
+        deleteacc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "http://192.168.0.108/car_dealership_project/delete.php?username="+getIntent().getStringExtra("logged_user");
+
+                DownloadTask task = new DownloadTask();
+                task.execute(url);
+            }
+        });
 
 
 
