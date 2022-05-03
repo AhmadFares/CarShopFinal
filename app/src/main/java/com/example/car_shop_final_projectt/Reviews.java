@@ -81,20 +81,19 @@ Button submit;
         rev=(EditText)findViewById(R.id.review);
         submit=(Button)findViewById(R.id.submit);
 
-        Log.i("MEESS: ",rev.getText());
 
-//                submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//                String url = "http://192.168.0.108/car_dealership_project/Reviews.php?message="+;
-//
-//               DownloadTask task = new DownloadTask();
-//                task.execute(url);
-////                    Log.i("ERRORE:",usernameData);
-//            }
-//        });
+                submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String message=rev.getText()+"";
+                String url = "http://192.168.0.108/car_dealership_project/Reviews.php?message="+message;
+
+               DownloadTask task = new DownloadTask();
+                task.execute(url);
+//                    Log.i("ERRORE:",usernameData);
+            }
+        });
 
 
 
