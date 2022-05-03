@@ -5,22 +5,50 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class SignInActivity extends AppCompatActivity {
     EditText username,password;
     Button signin;
+    String usernameData,passwordData;
+
+    public static byte[] getSHA(String input) throws NoSuchAlgorithmException
+    {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        return md.digest(input.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public static String toHexString(byte[] hash)
+    {
+        BigInteger number = new BigInteger(1, hash);
+
+        StringBuilder hexString = new StringBuilder(number.toString(16));
+
+        while (hexString.length() < 64)
+        {
+            hexString.insert(0, '0');
+        }
+        return hexString.toString();
+    }
+
+
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
 
@@ -34,14 +62,13 @@ public class SignInActivity extends AppCompatActivity {
                 http = (HttpURLConnection) url.openConnection();
 
                 InputStream in = http.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                InputStreamReader reader = new InputStreamReader(in);
                 int data = reader.read();
 
                 while( data != -1){
-                    ;
-                    result = result+ reader.readLine();
+                    char current = (char) data;
+                    result += current;
                     data = reader.read();
-
                 }
             }catch(Exception e){
                 e.printStackTrace();
@@ -56,14 +83,21 @@ public class SignInActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             try{
-                JSONObject json = new JSONObject(s);
-                String access = json.getString("result");
-                if(access.equalsIgnoreCase("YES")){
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
+                String passcheck="";
+                JSONArray jsonarray = new JSONArray(s);
+                for (int i=0; i< jsonarray.length();i++){
+                    JSONObject jsonobj=jsonarray.getJSONObject(i);
+                    if(jsonobj.getString("username").equalsIgnoreCase(usernameData)){
+                        passcheck = jsonobj.getString("password");
+                        String hasss=toHexString(getSHA(passwordData));
+                            if(passcheck.equals(hasss)){
+                                Intent intent = new Intent(getApplicationContext(), Home.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),"Error in your password or username", Toast.LENGTH_SHORT).show();
+                            }
+                    }
                 }
             }catch(Exception e){
                 e.printStackTrace();
@@ -86,8 +120,8 @@ public class SignInActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usernameData= ""+username.getText();
-                String  passwordData= ""+password.getText();
+                 usernameData= ""+username.getText();
+                  passwordData= ""+password.getText();
                 String url = "http://192.168.0.108/car_dealership_project/Login.php?username="+usernameData+"&password="+passwordData;
 
                 DownloadTask task = new DownloadTask();
@@ -100,3 +134,6 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 }
+
+
+

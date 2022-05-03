@@ -3,27 +3,24 @@ package com.example.car_shop_final_projectt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Car_Details extends AppCompatActivity {
 Intent getname;
+    String carname;
 ImageView img;
 TextView nm,mdl,clr,spcs,mtr,cond,klmtr;
 Button back;
@@ -40,12 +37,12 @@ Button back;
                 http = (HttpURLConnection) url.openConnection();
 
                 InputStream in = http.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                InputStreamReader reader = new InputStreamReader(in);
                 int data = reader.read();
 
                 while( data != -1){
-                    ;
-                    result = result+ reader.readLine();
+                    char current = (char) data;
+                    result += current;
                     data = reader.read();
 
                 }
@@ -62,14 +59,22 @@ Button back;
             super.onPostExecute(s);
 
             try{
-                JSONObject json = new JSONObject(s);
-                String name = json.getString("name");
-                String model = json.getString("model");
-                String km = json.getString("kilometer");
-                String specs = json.getString("specs");
-                String color = json.getString("color");
-                String motor = json.getString("motor");
-                String condition = json.getString("car_condition");
+                String name="",model="",km="",specs="",color="",motor="",condition="";
+                JSONArray jsonarray = new JSONArray(s);
+                for (int i=0; i< jsonarray.length();i++){
+                    JSONObject jsonobj=jsonarray.getJSONObject(i);
+                    if(jsonobj.getString("name").equalsIgnoreCase(carname)){
+                         name = jsonobj.getString("name");
+                         model = jsonobj.getString("model");
+                         km = jsonobj.getString("kilometer");
+                         specs = jsonobj.getString("specs");
+                         color = jsonobj.getString("color");
+                         motor = jsonobj.getString("motor");
+                         condition = jsonobj.getString("car_condition");
+
+                    }
+                }
+
 nm.setText(name);
 mdl.setText(model);
 klmtr.setText(km);
@@ -91,16 +96,17 @@ cond.setText(condition);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_details);
 
-       String carname= getIntent().getStringExtra("carname");
+        carname= getIntent().getStringExtra("carname");
         String  img_url= getIntent().getStringExtra("img_url");
-        nm= findViewById(R.id.name);
-        mdl= findViewById(R.id.model);
-        klmtr= findViewById(R.id.kilometer);
-        clr= findViewById(R.id.color);
-        cond= findViewById(R.id.condition);
-        mtr= findViewById(R.id.motor);
+        nm= (TextView) findViewById(R.id.name);
+        mdl= (TextView)findViewById(R.id.model);
+        spcs=(TextView)findViewById(R.id.specsholder);
+        klmtr= (TextView)findViewById(R.id.kilometer);
+        clr= (TextView)findViewById(R.id.colorHolder);
+        cond= (TextView)findViewById(R.id.conditionholder);
+        mtr= (TextView)findViewById(R.id.motorholder);
         back=findViewById(R.id.back);
-img=findViewById(R.id.imageView6);
+img=(ImageView) findViewById(R.id.imageView6);
 img.setImageResource(resourcesarray[Integer.parseInt(img_url)]);
 
 
