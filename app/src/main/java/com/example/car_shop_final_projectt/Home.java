@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import io.grpc.internal.SharedResourceHolder;
 
 public class Home extends AppCompatActivity {
 ImageView firstImage,second,third,fourth,fifth,sixth;
+Button prof;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,16 @@ ImageView firstImage,second,third,fourth,fifth,sixth;
         fourth=findViewById(R.id.imageView14);
         fifth=findViewById(R.id.imageView17);
         sixth=findViewById(R.id.imageView18);
+prof=(Button)findViewById(R.id.button4);
+
+prof.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent in= new Intent(getApplicationContext(),Profile.class);
+        startActivity(in);
+    }
+});
+
 
         firstImage.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -132,7 +132,7 @@
         app:layout_constraintVertical_bias="0.784" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/deletacc"
         android:layout_width="173dp"
         android:layout_height="46dp"
         android:background="#7D1968"
