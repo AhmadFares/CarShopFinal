@@ -22,7 +22,7 @@ import java.net.URL;
 public class Profile extends AppCompatActivity {
 Button deleteacc;
 
-TextView e;
+TextView e,e1;
     public class DownloadTask extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... urls){
@@ -106,25 +106,18 @@ TextView e;
             super.onPostExecute(s);
 
             try{
-                String usernamee="",emaill="";
+                String emaill="";
                 JSONArray jsonarray = new JSONArray(s);
                 for (int i=0; i< jsonarray.length();i++){
                     JSONObject jsonobj=jsonarray.getJSONObject(i);
-//                    if(jsonobj.getString("name").equalsIgnoreCase()){
-////                        name = jsonobj.getString("name");
-////                        emaill = jsonobj.getString("model");
-//
-//
-//                    }
+                    if(jsonobj.getString("username").equalsIgnoreCase(getIntent().getStringExtra("logged_user"))){
+
+                        emaill = jsonobj.getString("email");
+                        e1.setText(emaill);
+
+                    }
                 }
 
-//                nm.setText(name);
-//                mdl.setText(model);
-//                klmtr.setText(km);
-//                spcs.setText(specs);
-//                clr.setText(color);
-//                mtr.setText(motor);
-//                cond.setText(condition);
 
             }catch(Exception e){
                 e.printStackTrace();
@@ -136,13 +129,14 @@ TextView e;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-       String usernamee=getIntent().getStringExtra("logged_user");
         e=(TextView) findViewById(R.id.signUptext4);
-//        String url = "http://192.168.0.108/car_dealership_project/profile.php";
-//
-//                ProfileTask task = new ProfileTask();
-//                task.execute(url);
-e.setText(usernamee);
+        e1=(TextView) findViewById(R.id.signUptext3);
+        String url = "http://192.168.0.108/car_dealership_project/profile.php";
+        e.setText(getIntent().getStringExtra("logged_user"));
+
+                ProfileTask task = new ProfileTask();
+                task.execute(url);
+
 
 
 
