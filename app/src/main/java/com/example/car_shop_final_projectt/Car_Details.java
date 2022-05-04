@@ -24,7 +24,7 @@ Intent getname;
 ImageView img;
 TextView nm,mdl,clr,spcs,mtr,cond,klmtr;
 Button back;
-    int[] resourcesarray={R.drawable.bmww,R.drawable.liam_martens_uui5rqcyudm_unsplash};
+    int[] resourcesarray={R.drawable.liam_martens_uui5rqcyudm_unsplash,R.drawable.bmww,R.drawable.bestami_sarikaya_5plxputziiq_unsplash,R.drawable.krish_parmar_i70_s2okwm4_unsplash,R.drawable.lance_asper_wl6oesgyof4_unsplash,R.drawable.martin_katler_71mfodxiz8c_unsplash};
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
         protected String doInBackground(String... urls){
