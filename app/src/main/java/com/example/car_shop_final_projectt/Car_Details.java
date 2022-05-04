@@ -119,6 +119,7 @@ img.setImageResource(resourcesarray[Integer.parseInt(img_url)]);
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(getApplicationContext(), Home.class);
+                i.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
                 startActivity(i);
             }
         });

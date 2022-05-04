@@ -48,7 +48,7 @@ prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getApplicationContext(), Car_Details.class);
-
+                in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
                 in.putExtra("carname","mercedes");
                 in.putExtra("img_url","0");
                 startActivity(in);
@@ -58,6 +58,7 @@ prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getApplicationContext(), Car_Details.class);
+                in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
                 in.putExtra("carname","bmw");
                 in.putExtra("img_url","1");
                 startActivity(in);
@@ -67,6 +68,7 @@ prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getApplicationContext(), Car_Details.class);
+                in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
                 in.putExtra("carname","corolla");
                 in.putExtra("img_url","2");
                 startActivity(in);
@@ -77,6 +79,7 @@ prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getApplicationContext(), Car_Details.class);
+                in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
                 in.putExtra("carname","lambo");
                 in.putExtra("img_url","3");
                 startActivity(in);
@@ -86,6 +89,7 @@ prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getApplicationContext(), Car_Details.class);
+                in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
                 in.putExtra("carname","ferrari");
                 in.putExtra("img_url","4");
                 startActivity(in);
@@ -95,6 +99,7 @@ prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getApplicationContext(), Car_Details.class);
+                in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
                 in.putExtra("carname","gtr");
                 in.putExtra("img_url","5");
                 startActivity(in);

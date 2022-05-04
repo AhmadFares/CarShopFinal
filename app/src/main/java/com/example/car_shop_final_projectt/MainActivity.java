@@ -63,7 +63,8 @@ Button signup,tosignin;
                 String access = json.getString("access");
                 if(access.equalsIgnoreCase("YES")){
                     Intent intent = new Intent(getApplicationContext(), Home.class);
-                    intent.putExtra("logged_user",usernameData);
+                    Intent intent2 = new Intent(getApplicationContext(), Profile.class);
+                    intent2.putExtra("logged_user",usernameData);
                     startActivity(intent);
                 }
                 else {
