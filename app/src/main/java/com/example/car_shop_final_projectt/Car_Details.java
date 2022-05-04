@@ -98,6 +98,7 @@ cond.setText(condition);
 
         carname= getIntent().getStringExtra("carname");
         String  img_url= getIntent().getStringExtra("img_url");
+        String userr=getIntent().getStringExtra("logged_user");
         nm= (TextView) findViewById(R.id.name);
         mdl= (TextView)findViewById(R.id.model);
         spcs=(TextView)findViewById(R.id.specsholder);
@@ -119,7 +120,7 @@ img.setImageResource(resourcesarray[Integer.parseInt(img_url)]);
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(getApplicationContext(), Home.class);
-                i.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
+                i.putExtra("logged_user",userr);
                 startActivity(i);
             }
         });
