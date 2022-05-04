@@ -52,14 +52,14 @@
 
     <Button
         android:id="@+id/back"
-        android:layout_width="70dp"
-        android:layout_height="58dp"
+        android:layout_width="69dp"
+        android:layout_height="28dp"
         android:background="#FFFFFF"
-        android:text="11"
+        android:text="home"
         android:textAlignment="center"
         android:textColor="#89056B"
         android:textColorHint="#FFF0F0"
-        android:textSize="34sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"

@@ -93,13 +93,13 @@ public class SignInActivity extends AppCompatActivity {
                             if(passcheck.equals(hasss)){
                                 Intent intent = new Intent(getApplicationContext(), Home.class);
                                 intent.putExtra("logged_user",usernameData);
-
                                 startActivity(intent);
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),"Error in your password or username", Toast.LENGTH_SHORT).show();
                             }
                     }
+
                 }
             }catch(Exception e){
                 e.printStackTrace();
