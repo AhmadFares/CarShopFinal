@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Profile extends AppCompatActivity {
-Button deleteacc;
+Button deleteacc,backhome;
 
 TextView e,e1;
     public class DownloadTask extends AsyncTask<String, Void, String> {
@@ -131,11 +131,19 @@ TextView e,e1;
         setContentView(R.layout.activity_profile);
         e=(TextView) findViewById(R.id.signUptext4);
         e1=(TextView) findViewById(R.id.signUptext3);
+        backhome=(Button)findViewById(R.id.backhome) ;
         String url = "http://192.168.0.108/car_dealership_project/profile.php";
         e.setText(getIntent().getStringExtra("logged_user"));
 deleteacc=(Button) findViewById(R.id.deletacc);
                 ProfileTask task = new ProfileTask();
                 task.execute(url);
+                backhome.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent in1=new Intent(getApplicationContext(),Home.class);
+                        startActivity(in1);
+                    }
+                });
 
 
 
