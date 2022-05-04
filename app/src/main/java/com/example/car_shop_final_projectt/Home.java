@@ -30,6 +30,7 @@ rev=(Button)findViewById(R.id.reviewpage);
             @Override
             public void onClick(View view) {
                 Intent in= new Intent(getApplicationContext(),Reviews.class);
+                in.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
 
                 startActivity(in);
             }

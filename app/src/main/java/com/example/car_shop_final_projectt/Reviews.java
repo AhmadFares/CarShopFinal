@@ -86,6 +86,8 @@ Button submit,home;
         @Override
         public void onClick(View view) {
             Intent inn=new Intent(getApplicationContext(),Home.class);
+            inn.putExtra("logged_user",getIntent().getStringExtra("logged_user"));
+
             startActivity(inn);
         }
     });
