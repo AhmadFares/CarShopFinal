@@ -22,7 +22,7 @@ import java.net.URL;
 public class Reviews extends AppCompatActivity {
 
 EditText rev;
-Button submit;
+Button submit,home;
     public class DownloadTask extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... urls){
@@ -80,7 +80,15 @@ Button submit;
         setContentView(R.layout.activity_reviews);
         rev=(EditText)findViewById(R.id.review);
         submit=(Button)findViewById(R.id.submit);
+    home=(Button)findViewById(R.id.back2);
 
+    home.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent inn=new Intent(getApplicationContext(),Home.class);
+            startActivity(inn);
+        }
+    });
 
                 submit.setOnClickListener(new View.OnClickListener() {
             @Override
